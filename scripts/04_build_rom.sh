@@ -27,11 +27,15 @@ breakfast gemini
 echo "=========================================================="
 echo " Starting Compilation (brunch gemini)..."
 echo "=========================================================="
-brunch gemini
+brunch gemini 2>&1 | tee /mnt/mi5workspace/build.log
 
 # Copy output files to release directory
 OUTPUT_DIR="$WORKSPACE_DIR/out/target/product/gemini"
-RELEASE_DIR="$REPO_ROOT/release"
+if [ -d "/mnt/d/mi5-rom" ]; then
+    RELEASE_DIR="/mnt/d/mi5-rom/release"
+else
+    RELEASE_DIR="$REPO_ROOT/release"
+fi
 mkdir -p "$RELEASE_DIR"
 
 echo "Copying release artifacts to $RELEASE_DIR..."

@@ -37,8 +37,8 @@ Transition the initial LineageOS-based foundation into:
 ## 🛡️ Epic 2: Purging LineageOS & 3rd-Party Dependencies (Full Independence)
 **Goal:** Eliminate external breaking risks, purge Lineage telemetry/settings, and self-host all required trees.
 
-- [ ] **Task 2.1: Purge LineageOS Telemetry & Custom Interfaces**
-  - Completely remove `LineageParts`, `LineageUpdater` (OTA updater), `Trust` security interface, and telemetry packages from build configuration and Settings.
+- [x] **Task 2.1: Purge LineageOS Telemetry & Custom Interfaces**
+  - Completely removed `Updater` (OTA updater), `LineageSetupWizard`, `Seedvault`, `Etar`, `Profiles`, `Backgrounds`, `ExactCalculator`, `Email`, and `Exchange2` from build configurations.
 - [ ] **Task 2.2: Mirror Critical Trees to Dedicated GitHub Repositories**
   - Fork and mirror device tree (`device/xiaomi/gemini`), common tree (`device/xiaomi/msm8996-common`), and kernel tree (`kernel/xiaomi/msm8996`) under user's GitHub organization (`github.com/cicerali/...`).
   - Update `manifests/gemini.xml` to point directly to these dedicated repositories.
@@ -61,10 +61,10 @@ Transition the initial LineageOS-based foundation into:
 - [ ] **Task 3.2: Everyday Core Tools (Clock, Calculator, Keyboard)**
   - Replace AOSP Clock and Calculator with official **Google Clock** and **Google Calculator**.
   - Integrate official **Gboard (Google Keyboard)** with multilingual and glide typing support.
-- [ ] **Task 3.3: Modern & Ad-Free Weather Application**
-  - Pre-install open-source, ad-free, Material You **Breezy Weather** (or official Pixel Weather provider).
-- [ ] **Task 3.4: Modern File Manager**
-  - Pre-install clean, tag-supported **Google Files** or open-source **Material Files**.
+- [x] **Task 3.3: Modern & Ad-Free Weather Application**
+  - Integrated official open-source, ad-free, Material You **Breezy Weather** (`v6.2.2`) with Open-Meteo & DWD weather engines into `/product/app/BreezyWeather/`.
+- [x] **Task 3.4: Modern File Manager**
+  - Integrated clean, lightweight, ad-free **Material Files** (`v1.7.5`) into `/product/app/MaterialFiles/`.
 - [ ] **Task 3.5: Priv-App Permissions & Whitelist Configuration**
   - Configure `/etc/permissions/privapp-permissions-pixelgemini.xml` and default runtime permissions to ensure all pre-installed apps boot with zero crashes.
 
@@ -83,10 +83,10 @@ Transition the initial LineageOS-based foundation into:
 | **1.4** | Pixel UI Theme, Round Icons & Pixel Blue Accent | Epic 1 | ✅ Integrated (RRO Overlays) |
 | **1.5** | Official Pixel Sound Pack (Ringtones, Alarms) | Epic 1 | ✅ Integrated (67 tracks) |
 | **1.6** | Official Integrity (No Spoofing) | Epic 1 | ✅ Confirmed (Genuine Identity) |
-| **2.1** | Purge LineageParts, LineageUpdater & Telemetry | Epic 2 | 🔄 In Progress |
-| **2.2** | Mirror Device, Common & Kernel Trees to GitHub | Epic 2 | ⏳ Queued |
-| **2.3** | Self-Host Mi 5 Proprietary Vendor Blobs | Epic 2 | ⏳ Queued |
+| **2.1** | Purge LineageParts, LineageUpdater & Telemetry | Epic 2 | ✅ Completed & Debloated |
+| **2.2** | Mirror Device, Common & Kernel Trees to GitHub | Epic 2 | 🔄 In Progress |
+| **2.3** | Self-Host Mi 5 Proprietary Vendor Blobs | Epic 2 | 🔄 In Progress |
 | **3.1** | Google Communication Suite (Phone, Contacts, Messages) | Epic 3 | ⏳ Queued |
 | **3.2** | Google Core Tools (Clock, Calculator, Gboard) | Epic 3 | ⏳ Queued |
-| **3.3** | Ad-Free Weather App (Breezy Weather) | Epic 3 | ⏳ Queued |
-| **3.4** | Modern File Manager Integration | Epic 3 | ⏳ Queued |
+| **3.3** | Ad-Free Weather App (Breezy Weather) | Epic 3 | ✅ Integrated & Verified (`v6.2.2`) |
+| **3.4** | Modern File Manager Integration | Epic 3 | ✅ Integrated & Verified (`v1.7.5`) |
