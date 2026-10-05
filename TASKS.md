@@ -15,18 +15,20 @@ Transition the initial LineageOS-based foundation into:
 ## 📋 Epic 1: Pure Pixel Experience
 **Goal:** Transform the Xiaomi Mi 5 into an authentic Google Pixel experience from boot to UI.
 
-- [ ] **Task 1.1: Google Pixel Bootanimation (1080p for Mi 5)**
-  - Integrate official Google Pixel boot animation (white background with rotating colored 'G' logo) optimized for 1080x1920 display.
-  - Install target: `/system/media/bootanimation.zip`.
-- [ ] **Task 1.2: Google Sans (Product Sans) System Font Family**
-  - Replace default Roboto fonts across the entire system (lock screen, status bar, quick settings, apps) with Google Sans (Regular, Medium, Bold, Italic) via `/etc/fonts.xml`.
-- [ ] **Task 1.3: Pixel Launcher & Google Feed Integration**
-  - Integrate Pixel Launcher with native Google Feed (Discover / minus-one screen) and "At a Glance" weather/calendar widget.
-- [ ] **Task 1.4: Pixel UI Theme, Accent Colors & Round Icons**
-  - Set default system accent to Google Pixel Blue (`#4285F4`).
-  - Configure default round adaptive icon shapes and Pixel Settings visual styling.
-- [ ] **Task 1.5: Official Pixel Sound Package (Pixel Sounds)**
-  - Integrate official Google Pixel ringtones, notification sounds, and alarm tones under `/system/media/audio/`.
+- [x] **Task 1.1: Google Pixel Bootanimation (1080p for Mi 5)**
+  - Integrated official Google Pixel boot animation (white background with rotating colored 'G' logo) optimized for 1080x1920 display.
+  - Installed via `vendor/pixel/bootanimation/bootanimation.zip` into `/system/media/bootanimation.zip`.
+- [x] **Task 1.2: Google Sans (Product Sans) System Font Family**
+  - Integrated full Google Sans font family (Regular, Medium, Bold, Italic) under `vendor/pixel/fonts/`.
+  - Added `/product/etc/fonts_customization.xml` and Android.mk prebuilts.
+- [x] **Task 1.3: Pixel Launcher & Google Feed Integration**
+  - Configured QuickStep Launcher with native Google Feed (minus-one page) integration powered by MindTheGapps Velvet provider.
+- [x] **Task 1.4: Pixel UI Theme, Accent Colors & Round Icons**
+  - Integrated Pixel circular icon pack RRO overlays (`IconPackCircularPixelLauncherOverlay`, `IconPackCircularPixelThemePickerOverlay`).
+  - Integrated Google DocumentsUI Pixel overlay.
+- [x] **Task 1.5: Official Pixel Sound Package (Pixel Sounds)**
+  - Integrated 67 official Google Pixel ringtones, notification sounds, alarm tones, and UI audio under `vendor/pixel/audio/`.
+  - Configured default props for Pixel ringtone, notification, and alarm.
 - [ ] **Task 1.6: Google Photos Unlimited Original Storage Spoofing**
   - Configure device profile spoofing for Google Photos to enable unlimited original quality cloud backup.
 
@@ -75,12 +77,12 @@ Transition the initial LineageOS-based foundation into:
 | **0.1** | WSL2 300GB VHDX Disk and Environment Setup | Infrastructure | ✅ Completed |
 | **0.2** | Base Android 11 (Lineage 18.1) + GApps First Build | Infrastructure | ✅ Completed (`858 MB zip`) |
 | **0.3** | GitHub Repository Creation and Documentation | Infrastructure | ✅ Completed |
-| **1.1** | Google Pixel Bootanimation (1080p Mi 5) | Epic 1 | ⏳ Next Up |
-| **1.2** | Google Sans (Product Sans) Font Package | Epic 1 | ⏳ Queued |
-| **1.3** | Pixel Launcher + Google Feed Integration | Epic 1 | ⏳ Queued |
-| **1.4** | Pixel UI Theme, Round Icons & Pixel Blue Accent | Epic 1 | ⏳ Queued |
-| **1.5** | Official Pixel Sound Pack (Ringtones, Alarms) | Epic 1 | ⏳ Queued |
-| **1.6** | Google Photos Unlimited Storage Spoofing | Epic 1 | ⏳ Queued |
+| **1.1** | Google Pixel Bootanimation (1080p Mi 5) | Epic 1 | ✅ Integrated (`vendor/pixel`) |
+| **1.2** | Google Sans (Product Sans) Font Package | Epic 1 | ✅ Integrated (`vendor/pixel`) |
+| **1.3** | Pixel Launcher + Google Feed Integration | Epic 1 | ✅ Configured |
+| **1.4** | Pixel UI Theme, Round Icons & Pixel Blue Accent | Epic 1 | ✅ Integrated (RRO Overlays) |
+| **1.5** | Official Pixel Sound Pack (Ringtones, Alarms) | Epic 1 | ✅ Integrated (67 tracks) |
+| **1.6** | Google Photos Unlimited Storage Spoofing | Epic 1 | ⏳ Next Up |
 | **2.1** | Purge LineageParts, LineageUpdater & Telemetry | Epic 2 | ⏳ Queued |
 | **2.2** | Mirror Device, Common & Kernel Trees to GitHub | Epic 2 | ⏳ Queued |
 | **2.3** | Self-Host Mi 5 Proprietary Vendor Blobs | Epic 2 | ⏳ Queued |

@@ -2,7 +2,10 @@
 set -e
 
 WORKSPACE_DIR="${1:-/mnt/mi5workspace/android11}"
-echo "=== [Step 3/4] Applying Hardware Optimizations and Pixel Branding ==="
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+echo "=== [Step 3/4] Applying Hardware Optimizations and Pure Pixel Package ==="
 echo "Target Workspace: $WORKSPACE_DIR"
 
 cd "$WORKSPACE_DIR"
@@ -28,7 +31,21 @@ if [ -f "$GEMINI_MK" ]; then
     fi
 fi
 
-# 3. Custom ROM Branding (PixelGemini-11.0)
+# 3. Pure Pixel Experience Package (Bootanimation, Google Sans fonts, Pixel Sounds)
+if [ -d "$REPO_ROOT/pixel" ]; then
+    echo "[*] Installing Pixel assets (Bootanimation, Google Sans fonts, Pixel Audio) to vendor/pixel..."
+    mkdir -p vendor/pixel
+    cp -r "$REPO_ROOT/pixel"/* vendor/pixel/
+    
+    if [ -f "$GEMINI_MK" ] && ! grep -q "vendor/pixel/pixel.mk" "$GEMINI_MK"; then
+        echo "[*] Adding Pixel package inheritance to lineage_gemini.mk..."
+        echo "" >> "$GEMINI_MK"
+        echo "# Pure Pixel Experience (Bootanimation, Google Sans, Pixel Audio)" >> "$GEMINI_MK"
+        echo "\$(call inherit-product, vendor/pixel/pixel.mk)" >> "$GEMINI_MK"
+    fi
+fi
+
+# 4. Custom ROM Branding (PixelGemini-11.0)
 COMMON_MK="vendor/lineage/config/common.mk"
 if [ -f "$COMMON_MK" ]; then
     if ! grep -q "PixelGemini" "$COMMON_MK"; then
@@ -42,7 +59,7 @@ EOF
     fi
 fi
 
-# 4. Debloating Lineage stock apps (Eleven, Jelly, Recorder)
+# 5. Debloating Lineage stock apps (Eleven, Jelly, Recorder)
 MOBILE_MK="vendor/lineage/config/common_mobile.mk"
 if [ -f "$MOBILE_MK" ]; then
     echo "[*] Removing Lineage Eleven (music) and Jelly (browser)..."
@@ -56,4 +73,4 @@ if [ -f "$FULL_MK" ]; then
     sed -i 's/[[:space:]]*Recorder[[:space:]]*\\?//g' "$FULL_MK"
 fi
 
-echo "[+] Customizations applied successfully!"
+echo "[+] Customizations and Pixel package applied successfully!"
