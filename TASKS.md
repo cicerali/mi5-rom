@@ -68,6 +68,11 @@ Transition the initial LineageOS-based foundation into:
   - Integrated clean, lightweight, ad-free **Material Files** (`v1.7.5`) into `/product/app/MaterialFiles/`.
 - [ ] **Task 3.5: Priv-App Permissions & Whitelist Configuration**
   - Configure `/etc/permissions/privapp-permissions-pixelgemini.xml` and default runtime permissions to ensure all pre-installed apps boot with zero crashes.
+- [ ] **Task 3.6: Essential Ad-Free Pixel Suite (Calculator, Recorder, Browser, Music)**
+  - Integrate **Google Calculator** (`com.google.android.calculator`) for clean Material You calculations.
+  - Integrate **Google Recorder** (`com.google.android.apps.recorder`) with live audio waveforms.
+  - Integrate **Cromite** (Chromium engine with built-in AdBlock & PDF viewer).
+  - Integrate **Gramophone** (open-source Jetpack Compose Material You offline music player).
 
 ---
 
@@ -87,7 +92,9 @@ Transition the initial LineageOS-based foundation into:
 | **2.1** | Purge LineageParts, LineageUpdater & Telemetry | Epic 2 | ✅ Completed & Debloated |
 | **2.2** | Mirror Device, Common & Kernel Trees to GitHub | Epic 2 | ✅ Completed (100% Self-Hosted) |
 | **2.3** | Self-Host Mi 5 Proprietary Vendor Blobs | Epic 2 | ✅ Completed (`cicerali/proprietary...`) |
+| **2.6** | End-to-End Clean Build Verification (`build_all.sh --clean`) | Epic 2 | 🔄 **In Progress** (Running in user WSL) |
 | **3.1** | Google Communication Suite (Phone, Contacts, Messages) | Epic 3 | ⏳ Queued |
 | **3.2** | Google Core Tools (Clock, Calculator, Gboard) | Epic 3 | ⏳ Queued |
 | **3.3** | Ad-Free Weather App (Breezy Weather) | Epic 3 | ✅ Integrated & Verified (`v6.2.2`) |
 | **3.4** | Modern File Manager Integration | Epic 3 | ✅ Integrated & Verified (`v1.7.5`) |
+| **3.6** | Essential Ad-Free Pixel Suite (Calc, Recorder, Cromite, Music) | Epic 3 | ⏳ Queued (After clean build) |
