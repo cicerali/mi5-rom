@@ -4,19 +4,16 @@
 #
 
 # 1. Official Google Pixel Bootanimation (1080x1920)
-PRODUCT_COPY_FILES += \
-    vendor/pixel/bootanimation/bootanimation.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
+TARGET_BOOTANIMATION := vendor/pixel/bootanimation/bootanimation.zip
 
 # 2. Google Sans (Product Sans) Font Family
-PRODUCT_PACKAGES += \
-    GoogleSans-Bold \
-    GoogleSans-BoldItalic \
-    GoogleSans-Italic \
-    GoogleSans-Medium \
-    GoogleSans-MediumItalic \
-    GoogleSans-Regular
-
 PRODUCT_COPY_FILES += \
+    vendor/pixel/fonts/GoogleSans-Bold.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Bold.ttf \
+    vendor/pixel/fonts/GoogleSans-BoldItalic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-BoldItalic.ttf \
+    vendor/pixel/fonts/GoogleSans-Italic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Italic.ttf \
+    vendor/pixel/fonts/GoogleSans-Medium.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Medium.ttf \
+    vendor/pixel/fonts/GoogleSans-MediumItalic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-MediumItalic.ttf \
+    vendor/pixel/fonts/GoogleSans-Regular.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Regular.ttf \
     vendor/pixel/fonts/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
 
 # 3. Official Pixel Sounds (Ringtones, Notifications, Alarms, UI)
@@ -32,3 +29,9 @@ PRODUCT_PACKAGES += \
     IconPackCircularPixelLauncherOverlay \
     IconPackCircularPixelThemePickerOverlay \
     PixelDocumentsUIGoogleOverlay
+
+# 5. Curated Ad-Free Pre-installed Applications
+PRODUCT_PACKAGES += \
+    BreezyWeather \
+    MaterialFiles
+

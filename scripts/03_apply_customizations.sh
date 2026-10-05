@@ -59,12 +59,20 @@ EOF
     fi
 fi
 
-# 5. Debloating Lineage stock apps (Eleven, Jelly, Recorder)
+# 5. Debloating Lineage stock apps and bloatware
+COMMON_MK="vendor/lineage/config/common.mk"
+if [ -f "$COMMON_MK" ]; then
+    echo "[*] Removing Lineage Updater and LineageSetupWizard..."
+    sed -i '/[[:space:]]*LineageSetupWizard[[:space:]]*\\/d' "$COMMON_MK"
+    sed -i '/[[:space:]]*Updater/d' "$COMMON_MK"
+fi
+
 MOBILE_MK="vendor/lineage/config/common_mobile.mk"
 if [ -f "$MOBILE_MK" ]; then
-    echo "[*] Removing Lineage Eleven (music) and Jelly (browser)..."
+    echo "[*] Removing Lineage Eleven, Jelly, Seedvault, Etar, Profiles, Backgrounds, and legacy AOSP apps..."
     sed -i 's/[[:space:]]*Eleven[[:space:]]*\\//g' "$MOBILE_MK"
     sed -i 's/[[:space:]]*Jelly[[:space:]]*\\//g' "$MOBILE_MK"
+    sed -i -E '/[[:space:]]*(Backgrounds|Etar|Profiles|Seedvault|ExactCalculator|Email|Exchange2)[[:space:]]*\\?/d' "$MOBILE_MK"
 fi
 
 FULL_MK="vendor/lineage/config/common_full.mk"

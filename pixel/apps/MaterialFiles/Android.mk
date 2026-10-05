@@ -1,0 +1,11 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := MaterialFiles
+LOCAL_MODULE_OWNER := pixel
+LOCAL_SRC_FILES := MaterialFiles.apk
+LOCAL_MODULE_CLASS := APPS
+LOCAL_MODULE_TAGS := optional
+LOCAL_PRODUCT_MODULE := true
+LOCAL_CERTIFICATE := PRESIGNED
+include $(BUILD_PREBUILT)
