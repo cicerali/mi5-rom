@@ -1,0 +1,23 @@
+# Virtual disks and images
+*.vhdx
+*.vhd
+*.img
+*.iso
+*.swap
+swapfile
+
+# Build outputs and workspaces
+workspace
+workspace/
+android11/
+out/
+.ccache/
+release/
+release
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
