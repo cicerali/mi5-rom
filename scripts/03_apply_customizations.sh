@@ -60,25 +60,40 @@ EOF
 fi
 
 # 5. Debloating Lineage stock apps and bloatware
-COMMON_MK="vendor/lineage/config/common.mk"
-if [ -f "$COMMON_MK" ]; then
-    echo "[*] Removing Lineage Updater and LineageSetupWizard..."
-    sed -i '/[[:space:]]*LineageSetupWizard[[:space:]]*\\/d' "$COMMON_MK"
-    sed -i '/[[:space:]]*Updater/d' "$COMMON_MK"
-fi
+echo "[*] Purging Lineage bloatware (Updater, SetupWizard, Seedvault, Etar, Profiles, Backgrounds, Eleven, Jelly, Recorder)..."
+python3 - << 'EOF'
+import os, re
 
-MOBILE_MK="vendor/lineage/config/common_mobile.mk"
-if [ -f "$MOBILE_MK" ]; then
-    echo "[*] Removing Lineage Eleven, Jelly, Seedvault, Etar, Profiles, Backgrounds, and legacy AOSP apps..."
-    sed -i 's/[[:space:]]*Eleven[[:space:]]*\\//g' "$MOBILE_MK"
-    sed -i 's/[[:space:]]*Jelly[[:space:]]*\\//g' "$MOBILE_MK"
-    sed -i -E '/[[:space:]]*(Backgrounds|Etar|Profiles|Seedvault|ExactCalculator|Email|Exchange2)[[:space:]]*\\?/d' "$MOBILE_MK"
-fi
+workspace = os.getcwd()
 
-FULL_MK="vendor/lineage/config/common_full.mk"
-if [ -f "$FULL_MK" ]; then
-    echo "[*] Removing Lineage Recorder..."
-    sed -i 's/[[:space:]]*Recorder[[:space:]]*\\?//g' "$FULL_MK"
-fi
+# 1. vendor/lineage/config/common.mk
+common_mk = os.path.join(workspace, 'vendor/lineage/config/common.mk')
+if os.path.isfile(common_mk):
+    with open(common_mk, 'r') as f:
+        lines = f.readlines()
+    unwanted = ['LineageSetupWizard', 'Updater']
+    new_lines = [l for l in lines if not any(re.search(rf'\b{pkg}\b', l) for pkg in unwanted)]
+    with open(common_mk, 'w') as f:
+        f.writelines(new_lines)
+
+# 2. vendor/lineage/config/common_mobile.mk
+mobile_mk = os.path.join(workspace, 'vendor/lineage/config/common_mobile.mk')
+if os.path.isfile(mobile_mk):
+    with open(mobile_mk, 'r') as f:
+        lines = f.readlines()
+    unwanted = ['Eleven', 'Jelly', 'Seedvault', 'Etar', 'Profiles', 'Backgrounds', 'ExactCalculator', 'Email', 'Exchange2']
+    new_lines = [l for l in lines if not any(re.search(rf'\b{pkg}\b', l) for pkg in unwanted)]
+    with open(mobile_mk, 'w') as f:
+        f.writelines(new_lines)
+
+# 3. vendor/lineage/config/common_full.mk
+full_mk = os.path.join(workspace, 'vendor/lineage/config/common_full.mk')
+if os.path.isfile(full_mk):
+    with open(full_mk, 'r') as f:
+        lines = f.readlines()
+    new_lines = [l for l in lines if not re.search(r'\bRecorder\b', l)]
+    with open(full_mk, 'w') as f:
+        f.writelines(new_lines)
+EOF
 
 echo "[+] Customizations and Pixel package applied successfully!"

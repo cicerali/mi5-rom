@@ -27,7 +27,11 @@ breakfast gemini
 echo "=========================================================="
 echo " Starting Compilation (brunch gemini)..."
 echo "=========================================================="
-brunch gemini 2>&1 | tee /mnt/mi5workspace/build.log
+BUILD_LOG="$WORKSPACE_DIR/build.log"
+if [ -d "/mnt/mi5workspace" ] && [ "$WORKSPACE_DIR" != "/mnt/mi5workspace" ]; then
+    ln -sf "$BUILD_LOG" /mnt/mi5workspace/build.log 2>/dev/null || true
+fi
+brunch gemini 2>&1 | tee "$BUILD_LOG"
 
 # Copy output files to release directory
 OUTPUT_DIR="$WORKSPACE_DIR/out/target/product/gemini"

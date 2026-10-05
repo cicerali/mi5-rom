@@ -28,6 +28,15 @@ This repository provides an automated, modular, and fully reproducible build pip
 ├── build_all.sh                    # Master script to run end-to-end build
 ├── manifests/
 │   └── gemini.xml                  # Local manifest (gemini, msm8996-common, kernel 3.18)
+├── pixel/                          # Self-contained Pure Pixel experience assets
+│   ├── pixel.mk                    # Master makefile inheriting fonts, audio, overlays & apps
+│   ├── bootanimation/              # Official Google Pixel 1080p boot animation
+│   ├── fonts/                      # Google Sans (Product Sans) TTF font family & config
+│   ├── audio/                      # Official Pixel sounds (67 ringtones, alarms, notifications)
+│   ├── rro_overlays/               # Pixel circular icons and DocumentsUI RRO overlays
+│   └── apps/                       # Curated ad-free pre-installed apps
+│       ├── BreezyWeather/          # Modern open-source Material You weather app
+│       └── MaterialFiles/          # Clean, ad-free open-source file manager
 ├── scripts/
 │   ├── 01_install_dependencies.sh  # Installs apt packages, openjdk-11, repo, git-lfs
 │   ├── 02_init_and_sync.sh         # Inits LineageOS 18.1, syncs code, sparse blobs & GApps
@@ -35,7 +44,8 @@ This repository provides an automated, modular, and fully reproducible build pip
 │   └── 04_build_rom.sh             # Configures Ccache, breakfast gemini, brunch gemini
 ├── windows/
 │   └── create_300gb_disk.ps1       # Extra setup script for Windows 11 WSL2 users (300GB VHDX)
-└── README.md
+├── TASKS.md                        # Phased project roadmap and milestone tracker
+└── README.md                       # Comprehensive guide and documentation
 ```
 
 ---
@@ -98,13 +108,18 @@ sudo swapon /mnt/mi5workspace/swapfile
 If you want to run the entire pipeline automatically:
 
 ```bash
-git clone https://github.com/<your-username>/mi5-pixelgemini-rom.git
-cd mi5-pixelgemini-rom
+git clone https://github.com/cicerali/mi5-rom.git
+cd mi5-rom
 chmod +x build_all.sh scripts/*.sh
 
 # Run end-to-end build (specify workspace path if different from default)
 ./build_all.sh /mnt/mi5workspace/android11
 ```
+
+> **Live Monitoring:** To watch compilation progress in real-time in another terminal:
+> ```bash
+> tail -f /mnt/mi5workspace/build.log
+> ```
 
 ---
 
