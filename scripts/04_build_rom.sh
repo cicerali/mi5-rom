@@ -24,13 +24,16 @@ ccache -M 50G
 source build/envsetup.sh
 breakfast gemini
 
-# Clean previous target artifacts (installclean by default, or full clean if CLEAN_BUILD=full)
-if [ "${CLEAN_BUILD:-1}" = "full" ]; then
+# Clean handling: default is 0 (incremental, fast build)
+CLEAN_BUILD="${CLEAN_BUILD:-0}"
+if [ "$CLEAN_BUILD" = "full" ] || [ "$CLEAN_BUILD" = "clean" ]; then
     echo "[*] Performing full clean (mka clean)..."
     mka clean
-elif [ "${CLEAN_BUILD:-1}" != "0" ]; then
+elif [ "$CLEAN_BUILD" = "1" ] || [ "$CLEAN_BUILD" = "installclean" ]; then
     echo "[*] Cleaning previous target images for fresh build (mka installclean)..."
     mka installclean
+else
+    echo "[*] Performing incremental build (reusing previous outputs for faster build)..."
 fi
 
 echo "=========================================================="
