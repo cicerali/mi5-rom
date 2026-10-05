@@ -6,6 +6,6 @@
     <!-- MSM8996 Common Tree -->
     <project name="LineageOS/android_device_xiaomi_msm8996-common" path="device/xiaomi/msm8996-common" remote="github" revision="lineage-18.1" clone-depth="1" />
     
-    <!-- MSM8996 Linux Kernel 3.18 Tree -->
-    <project name="LineageOS/android_kernel_xiaomi_msm8996" path="kernel/xiaomi/msm8996" remote="github" revision="lineage-18.1" clone-depth="1" />
+    <!-- MSM8996 Linux Kernel 3.18 Tree (Self-Hosted) -->
+    <project name="cicerali/android_kernel_xiaomi_msm8996" path="kernel/xiaomi/msm8996" remote="github" revision="lineage-18.1" />
 </manifest>
