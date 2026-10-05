@@ -41,19 +41,16 @@ if [ -d "external/chromium-webview/prebuilt/arm" ]; then
     cd "$WORKSPACE_DIR"
 fi
 
-# 5. Sparse Checkout Proprietary Vendor Blobs (gemini + msm8996-common ONLY)
-echo "[*] Fetching Xiaomi Mi 5 vendor drivers via sparse-checkout..."
-mkdir -p vendor/xiaomi
-cd vendor/xiaomi
-if [ ! -d ".git" ]; then
-    git init
-    git remote add origin https://gitlab.com/the-muppets/proprietary_vendor_xiaomi.git
-    git config core.sparseCheckout true
-    echo "gemini/*" >> .git/info/sparse-checkout
-    echo "msm8996-common/*" >> .git/info/sparse-checkout
+# 5. Self-Hosted Proprietary Vendor Blobs (Xiaomi Mi 5 & MSM8996 Common)
+echo "[*] Fetching Xiaomi Mi 5 vendor drivers from self-hosted repository..."
+if [ ! -d "vendor/xiaomi/.git" ]; then
+    rm -rf vendor/xiaomi
+    git clone --depth=1 -b lineage-18.1 https://github.com/cicerali/proprietary_vendor_xiaomi_gemini.git vendor/xiaomi
+else
+    cd vendor/xiaomi
+    git pull origin lineage-18.1 || true
+    cd "$WORKSPACE_DIR"
 fi
-git pull --depth=1 origin lineage-18.1 || true
-cd "$WORKSPACE_DIR"
 
 # 6. Built-in GApps (MindTheGapps rho / Android 11)
 echo "[*] Fetching MindTheGapps (Android 11 built-in)..."

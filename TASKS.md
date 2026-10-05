@@ -39,11 +39,12 @@ Transition the initial LineageOS-based foundation into:
 
 - [x] **Task 2.1: Purge LineageOS Telemetry & Custom Interfaces**
   - Completely removed `Updater` (OTA updater), `LineageSetupWizard`, `Seedvault`, `Etar`, `Profiles`, `Backgrounds`, `ExactCalculator`, `Email`, and `Exchange2` from build configurations.
-- [ ] **Task 2.2: Mirror Critical Trees to Dedicated GitHub Repositories**
-  - Fork and mirror device tree (`device/xiaomi/gemini`), common tree (`device/xiaomi/msm8996-common`), and kernel tree (`kernel/xiaomi/msm8996`) under user's GitHub organization (`github.com/cicerali/...`).
-  - Update `manifests/gemini.xml` to point directly to these dedicated repositories.
-- [ ] **Task 2.3: Self-Host & Isolate Mi 5 Vendor Blobs**
-  - Extract only `gemini` and `msm8996-common` blobs from TheMuppets and maintain a standalone `proprietary_vendor_xiaomi_gemini` repository.
+- [x] **Task 2.2: Mirror Critical Trees to Dedicated GitHub Repositories**
+  - Self-hosted device tree (`cicerali/android_device_xiaomi_gemini`), common tree (`cicerali/android_device_xiaomi_msm8996-common`), and kernel tree (`cicerali/android_kernel_xiaomi_msm8996`) under `github.com/cicerali`.
+  - Updated `manifests/gemini.xml` to point directly to these dedicated repositories.
+- [x] **Task 2.3: Self-Host & Isolate Mi 5 Vendor Blobs**
+  - Extracted and isolated 219 MB of verified Xiaomi Mi 5 hardware drivers into `github.com/cicerali/proprietary_vendor_xiaomi_gemini`.
+  - Updated `scripts/02_init_and_sync.sh` to clone directly from user repository.
 - [ ] **Task 2.4: Freeze MindTheGapps Repository**
   - Maintain a verified mirror of `MindTheGapps rho` (Android 11) to eliminate external upstream risks.
 - [ ] **Task 2.5: Standalone Build Configurations (AOSP Standard)**
@@ -84,8 +85,8 @@ Transition the initial LineageOS-based foundation into:
 | **1.5** | Official Pixel Sound Pack (Ringtones, Alarms) | Epic 1 | ✅ Integrated (67 tracks) |
 | **1.6** | Official Integrity (No Spoofing) | Epic 1 | ✅ Confirmed (Genuine Identity) |
 | **2.1** | Purge LineageParts, LineageUpdater & Telemetry | Epic 2 | ✅ Completed & Debloated |
-| **2.2** | Mirror Device, Common & Kernel Trees to GitHub | Epic 2 | 🔄 In Progress |
-| **2.3** | Self-Host Mi 5 Proprietary Vendor Blobs | Epic 2 | 🔄 In Progress |
+| **2.2** | Mirror Device, Common & Kernel Trees to GitHub | Epic 2 | ✅ Completed (100% Self-Hosted) |
+| **2.3** | Self-Host Mi 5 Proprietary Vendor Blobs | Epic 2 | ✅ Completed (`cicerali/proprietary...`) |
 | **3.1** | Google Communication Suite (Phone, Contacts, Messages) | Epic 3 | ⏳ Queued |
 | **3.2** | Google Core Tools (Clock, Calculator, Gboard) | Epic 3 | ⏳ Queued |
 | **3.3** | Ad-Free Weather App (Breezy Weather) | Epic 3 | ✅ Integrated & Verified (`v6.2.2`) |
