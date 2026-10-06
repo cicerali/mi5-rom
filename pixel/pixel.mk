@@ -33,5 +33,7 @@ PRODUCT_PACKAGES += \
 # 5. Curated Ad-Free Pre-installed Applications
 PRODUCT_PACKAGES += \
     BreezyWeather \
-    MaterialFiles
+    MaterialFiles \
+    Omni
+
 
