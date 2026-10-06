@@ -31,6 +31,10 @@ Transition the initial LineageOS-based foundation into:
   - Configured default props for Pixel ringtone, notification, and alarm.
 - [x] **Task 1.6: Official Integrity (Spoofing Excluded)**
   - Decided against device spoofing to maintain 100% genuine system security, official compliance, and privacy ethics. Device retains clean, genuine Android identification without unauthorized property manipulation.
+- [x] **Task 1.7: MIUI Capacitive Button Order & Dynamic Toggle**
+  - Configured original MIUI button order as default: Left = Recents (App Switch), Right = Back.
+  - Initialized `/proc/touchpanel/reversed_keys_enable` to 1 on boot and set `ButtonSettings` default value to enabled.
+  - Fully toggleable by user anytime via *Settings > System > Buttons > Swap capacitive buttons*.
 
 ---
 
@@ -93,6 +97,7 @@ Transition the initial LineageOS-based foundation into:
 | **1.4** | Pixel UI Theme, Round Icons & Pixel Blue Accent | Epic 1 | ✅ Integrated (RRO Overlays) |
 | **1.5** | Official Pixel Sound Pack (Ringtones, Alarms) | Epic 1 | ✅ Integrated (67 tracks) |
 | **1.6** | Official Integrity (No Spoofing) | Epic 1 | ✅ Confirmed (Genuine Identity) |
+| **1.7** | MIUI Capacitive Button Order (Default & Toggle) | Epic 1 | ✅ Completed & Verified |
 | **2.1** | Purge LineageParts, LineageUpdater & Telemetry | Epic 2 | ✅ Completed & Debloated |
 | **2.2** | Mirror Device, Common & Kernel Trees to GitHub | Epic 2 | ✅ Completed (100% Self-Hosted) |
 | **2.3** | Self-Host Mi 5 Proprietary Vendor Blobs | Epic 2 | ✅ Completed (`cicerali/proprietary...`) |

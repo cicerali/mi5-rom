@@ -96,4 +96,43 @@ if os.path.isfile(full_mk):
         f.writelines(new_lines)
 EOF
 
+# 6. Default Capacitive Button Order: Original MIUI Layout (Left = Recents, Right = Back)
+echo "[*] Setting default capacitive button order to MIUI layout (Left = Recents, Right = Back)..."
+python3 - << 'EOF'
+import os, re
+
+workspace = os.getcwd()
+
+# 1. Update LineageParts button_settings.xml defaultValue to true
+button_xml = os.path.join(workspace, 'packages/apps/LineageParts/res/xml/button_settings.xml')
+if os.path.isfile(button_xml):
+    with open(button_xml, 'r') as f:
+        content = f.read()
+    pattern = r'(android:key="swap_capacitive_keys"[\s\S]*?android:defaultValue=)"false"'
+    new_content = re.sub(pattern, r'\1"true"', content)
+    with open(button_xml, 'w') as f:
+        f.write(new_content)
+
+# 2. Update ButtonSettings.java default fallback to true
+button_java = os.path.join(workspace, 'packages/apps/LineageParts/src/org/lineageos/lineageparts/input/ButtonSettings.java')
+if os.path.isfile(button_java):
+    with open(button_java, 'r') as f:
+        content = f.read()
+    content = content.replace('preferences.getBoolean(KEY_SWAP_CAPACITIVE_KEYS, false)', 'preferences.getBoolean(KEY_SWAP_CAPACITIVE_KEYS, true)')
+    with open(button_java, 'w') as f:
+        f.write(content)
+
+# 3. Initialize hardware node in init.qcom.sh
+init_sh = os.path.join(workspace, 'device/xiaomi/msm8996-common/rootdir/etc/init.qcom.sh')
+if os.path.isfile(init_sh):
+    with open(init_sh, 'r') as f:
+        content = f.read()
+    if 'reversed_keys_enable' not in content:
+        target = 'chown -LR system.system /proc/touchpanel\n'
+        addition = 'chown -LR system.system /proc/touchpanel\nif [ -f /proc/touchpanel/reversed_keys_enable ]; then\n    echo 1 > /proc/touchpanel/reversed_keys_enable\nfi\n'
+        content = content.replace(target, addition)
+        with open(init_sh, 'w') as f:
+            f.write(content)
+EOF
+
 echo "[+] Customizations and Pixel package applied successfully!"
