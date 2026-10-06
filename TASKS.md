@@ -76,6 +76,7 @@ Transition the initial LineageOS-based foundation into:
   - Integrate **Google Calendar** (`com.google.android.calendar`) for seamless Google account schedule sync.
   - Integrate **Google Photos** (`com.google.android.apps.photos`) as the sole official Pixel gallery, purging legacy AOSP `Gallery2`.
   - Integrate **Gboard** (`com.google.android.inputmethod.latin`) as the default smart keyboard with multilingual glide typing, replacing legacy `LatinIME`.
+  - Integrate **Omni Toolbox** (`uk.akane.omni`) for compass, spirit level, angle finder, and live satellite tracking.
 
 ---
 
@@ -100,4 +101,4 @@ Transition the initial LineageOS-based foundation into:
 | **3.2** | Google Core Tools (Clock, Calculator, Gboard) | Epic 3 | ⏳ Queued |
 | **3.3** | Ad-Free Weather App (Breezy Weather) | Epic 3 | ✅ Integrated & Verified (`v6.2.2`) |
 | **3.4** | Modern File Manager Integration | Epic 3 | ✅ Integrated & Verified (`v1.7.5`) |
-| **3.6** | Essential Authentic Pixel Suite (Calc, Recorder, Cromite, Music, Calendar, Photos, Gboard) | Epic 3 | ⏳ Next Up (Ready to implement) |
+| **3.6** | Essential Authentic Pixel Suite (Calc, Recorder, Cromite, Music, Calendar, Photos, Gboard, Omni) | Epic 3 | ⏳ Next Up (Ready to implement) |
