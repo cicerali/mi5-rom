@@ -13,10 +13,11 @@ This repository provides an automated, modular, and fully reproducible build pip
 
 ## Key Features & Optimizations
 
-* **Pure Pixel Experience:** Built-in Google Play Services, Play Store, and SetupWizard (`MindTheGapps rho`). Device model identified as `Mi 5 (Pixel Edition)`.
+* **Pure Pixel Experience:** Built-in Google Play Services, Play Store, and SetupWizard (`MindTheGapps rho`). Device model identified as `Mi 5 (Pixel Edition)` with official 1080p Pixel bootanimation, full Google Sans typography, Pixel UI circular icons, and 67 official Pixel sounds.
 * **Hardware Performance Tuning:** ZRAM compressed swap configured to **1.5 GB LZ4** for maximum fluidity on 3 GB RAM devices.
-* **Debloated & Clean:** Removed Lineage stock music (`Eleven`), browser (`Jelly`), and audio recorder (`Recorder`) to ensure a pure Google app ecosystem.
-* **Sparse Vendor Checkout:** Pulls **only** `gemini` and `msm8996-common` proprietary blobs from TheMuppets, saving 15+ GB of unnecessary downloads and eliminating Soong module conflicts.
+* **Debloated & Clean (Zero Duplicates):** Removed legacy AOSP/Lineage apps (`Eleven`, `Jelly`, `Gallery2`, `LatinIME`, `ExactCalculator`, `Etar`, `Recorder`) and replaced them with curated modern and authentic Pixel applications.
+* **100% Self-Hosted Independence:** Device tree, common tree, kernel, and proprietary vendor blobs are fully self-hosted under `github.com/cicerali` to eliminate 3rd-party breaking risks.
+* **Original MIUI Capacitive Key Order:** Hardware navigation buttons follow the original Xiaomi MIUI layout by default (Left: Recents, Right: Back), dynamically toggleable anytime in *Settings > System > Buttons*.
 * **Automated Git LFS Handling:** Automatically pulls Chromium WebView Git LFS binaries to eliminate the common 99% packaging crash.
 * **Ccache Pre-configured:** 50 GB Ccache allocation for rapid incremental rebuilding (5-10 minutes on warm cache).
 
@@ -36,7 +37,15 @@ This repository provides an automated, modular, and fully reproducible build pip
 │   ├── rro_overlays/               # Pixel circular icons and DocumentsUI RRO overlays
 │   └── apps/                       # Curated ad-free pre-installed apps
 │       ├── BreezyWeather/          # Modern open-source Material You weather app
-│       └── MaterialFiles/          # Clean, ad-free open-source file manager
+│       ├── Cromite/                # Ad-free Chromium browser with native PDF reader
+│       ├── Gboard/                 # Official Google smart multilingual keyboard
+│       ├── GoogleCalculator/       # Official Pixel Calculator
+│       ├── GoogleCalendar/         # Official Google Calendar with cloud sync
+│       ├── GooglePhotos/           # Official Pixel Photos & gallery
+│       ├── GoogleRecorder/         # Pixel live waveform voice recorder
+│       ├── Gramophone/             # Material You offline music player
+│       ├── MaterialFiles/          # Clean, ad-free open-source file manager
+│       └── Omni/                   # Minimalist toolbox (compass, level, sensors, GPS)
 ├── scripts/
 │   ├── 01_install_dependencies.sh  # Installs apt packages, openjdk-11, repo, git-lfs
 │   ├── 02_init_and_sync.sh         # Inits LineageOS 18.1, syncs code, sparse blobs & GApps
@@ -135,7 +144,7 @@ chmod +x build_all.sh scripts/*.sh
 ```bash
 ./scripts/02_init_and_sync.sh /mnt/mi5workspace/android11
 ```
-*Runs `repo init` for LineageOS 18.1, copies `manifests/gemini.xml`, syncs Android source code, downloads Chromium WebView Git LFS APKs, pulls TheMuppets vendor blobs via sparse-checkout, and clones MindTheGapps (`rho`).*
+*Runs `repo init` for LineageOS 18.1, copies `manifests/gemini.xml`, syncs self-hosted device/kernel/common sources, downloads Chromium WebView Git LFS APKs, pulls isolated Mi 5 hardware blobs from `cicerali/proprietary_vendor_xiaomi_gemini`, and clones MindTheGapps (`rho`).*
 
 #### Step 3: Apply Hardware Tuning & Pixel Branding
 ```bash
