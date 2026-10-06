@@ -68,15 +68,15 @@ Transition the initial LineageOS-based foundation into:
   - Integrated clean, lightweight, ad-free **Material Files** (`v1.7.5`) into `/product/app/MaterialFiles/`.
 - [ ] **Task 3.5: Priv-App Permissions & Whitelist Configuration**
   - Configure `/etc/permissions/privapp-permissions-pixelgemini.xml` and default runtime permissions to ensure all pre-installed apps boot with zero crashes.
-- [ ] **Task 3.6: Essential Authentic Pixel App Suite (Zero Duplicates)**
-  - Integrate **Google Calculator** (`com.google.android.calculator`) for clean Material You calculations.
-  - Integrate **Google Recorder** (`com.google.android.apps.recorder`) with live audio waveforms.
-  - Integrate **Cromite** (Chromium engine with built-in AdBlock & native PDF viewing capabilities).
-  - Integrate **Gramophone** (open-source Jetpack Compose Material You offline music player).
-  - Integrate **Google Calendar** (`com.google.android.calendar`) for seamless Google account schedule sync.
-  - Integrate **Google Photos** (`com.google.android.apps.photos`) as the sole official Pixel gallery, purging legacy AOSP `Gallery2`.
-  - Integrate **Gboard** (`com.google.android.inputmethod.latin`) as the default smart keyboard with multilingual glide typing, replacing legacy `LatinIME`.
-  - Integrate **Omni Toolbox** (`uk.akane.omni`) for compass, spirit level, angle finder, and live satellite tracking.
+- [x] **Task 3.6: Essential Authentic Pixel App Suite (Zero Duplicates)**
+  - Integrated **Google Calculator** (`com.google.android.calculator`) for clean Material You calculations (overrides `ExactCalculator`).
+  - Integrated **Google Recorder** (`com.google.android.apps.recorder`) with live audio waveforms (overrides `Recorder`).
+  - Integrated **Cromite** (Chromium engine with built-in AdBlock & native PDF viewing capabilities, overrides `Jelly`).
+  - Integrated **Gramophone** (open-source Jetpack Compose Material You offline music player, overrides `Eleven`).
+  - Integrated **Google Calendar** (`com.google.android.calendar`) for seamless Google account schedule sync (overrides `Etar`).
+  - Integrated **Google Photos** (`com.google.android.apps.photos`) as the sole official Pixel gallery, purging legacy AOSP `Gallery2`.
+  - Integrated **Gboard** (`com.google.android.inputmethod.latin`) as the default smart keyboard with multilingual glide typing, replacing legacy `LatinIME`.
+  - Integrated **Omni Toolbox** (`uk.akane.omni`) for compass, spirit level, angle finder, and live satellite tracking.
 
 ---
 
@@ -101,4 +101,4 @@ Transition the initial LineageOS-based foundation into:
 | **3.2** | Google Core Tools (Clock, Calculator, Gboard) | Epic 3 | ⏳ Queued |
 | **3.3** | Ad-Free Weather App (Breezy Weather) | Epic 3 | ✅ Integrated & Verified (`v6.2.2`) |
 | **3.4** | Modern File Manager Integration | Epic 3 | ✅ Integrated & Verified (`v1.7.5`) |
-| **3.6** | Essential Authentic Pixel Suite (Calc, Recorder, Cromite, Music, Calendar, Photos, Gboard, Omni) | Epic 3 | ⏳ Next Up (Ready to implement) |
+| **3.6** | Essential Authentic Pixel Suite (Calc, Recorder, Cromite, Music, Calendar, Photos, Gboard, Omni) | Epic 3 | ✅ Integrated (Suite Ready) |

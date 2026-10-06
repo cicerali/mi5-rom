@@ -34,6 +34,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     BreezyWeather \
     MaterialFiles \
-    Omni
+    Omni \
+    Gramophone \
+    GoogleCalculator \
+    GoogleCalendar \
+    GoogleRecorder \
+    Gboard \
+    GooglePhotos \
+    Cromite
 
 

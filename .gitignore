@@ -21,3 +21,7 @@ release
 *.bak
 .DS_Store
 Thumbs.db
+
+# Large binaries exceeding GitHub 100MB limit (downloaded automatically in build script)
+pixel/apps/Cromite/*.apk
+

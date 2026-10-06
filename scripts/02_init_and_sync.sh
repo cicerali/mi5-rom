@@ -58,4 +58,12 @@ if [ ! -d "vendor/gapps" ]; then
     git clone --depth=1 -b rho https://gitlab.com/MindTheGapps/vendor_gapps.git vendor/gapps
 fi
 
+# 7. Fetch Cromite (Chromium Browser with AdBlock & PDF support)
+CROMITE_DIR="$REPO_ROOT/pixel/apps/Cromite"
+if [ ! -f "$CROMITE_DIR/Cromite.apk" ]; then
+    echo "[*] Downloading Cromite (Pixel Chromium Browser with built-in AdBlock)..."
+    mkdir -p "$CROMITE_DIR"
+    curl -L --retry 3 -o "$CROMITE_DIR/Cromite.apk" "https://github.com/uazo/cromite/releases/download/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/arm64_ChromePublic.apk"
+fi
+
 echo "[+] Sync and dependencies preparation completed successfully!"
