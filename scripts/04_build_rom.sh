@@ -47,11 +47,7 @@ brunch gemini 2>&1 | tee "$BUILD_LOG"
 
 # Copy output files to release directory
 OUTPUT_DIR="$WORKSPACE_DIR/out/target/product/gemini"
-if [ -d "/mnt/d/mi5-rom" ]; then
-    RELEASE_DIR="/mnt/d/mi5-rom/release"
-else
-    RELEASE_DIR="$REPO_ROOT/release"
-fi
+RELEASE_DIR="$REPO_ROOT/release"
 mkdir -p "$RELEASE_DIR"
 
 echo "Copying release artifacts to $RELEASE_DIR..."
